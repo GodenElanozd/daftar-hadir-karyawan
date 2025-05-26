@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Karyawan</title>
+    <link rel="stylesheet" href="index.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@^0.7.0",
+          "xlsx": "https://esm.sh/xlsx"
+        }
+      }
+    </script>
+</head>
+<body>
+    <div id="app-container">
+        <!-- Employee Login Section -->
+        <section id="employee-login-section" class="active-section">
+            <div class="form-container">
+                <h1>Login Karyawan</h1>
+                <label for="nik-input">NIK:</label>
+                <input type="text" id="nik-input" aria-label="Nomor Induk Karyawan">
+                <button id="login-button">Login</button>
+                <p id="error-message" class="error-text" aria-live="polite"></p>
+                <button id="show-admin-login-view-button" type="button" class="link-button">Login sebagai Admin</button>
+            </div>
+        </section>
+
+        <!-- Admin Login Section -->
+        <section id="admin-login-section" class="hidden-section">
+            <div class="form-container">
+                <h1>Login Admin</h1>
+                <label for="admin-username">Username:</label>
+                <input type="text" id="admin-username" aria-label="Username Admin">
+                <label for="admin-password">Password:</label>
+                <input type="password" id="admin-password" aria-label="Password Admin">
+                <button id="admin-login-button">Login Admin</button>
+                <p id="admin-error-message" class="error-text" aria-live="polite"></p>
+                <button id="show-employee-login-view-button" type="button" class="link-button">Login sebagai Karyawan</button>
+            </div>
+        </section>
+
+        <!-- Employee Dashboard Section -->
+        <section id="employee-dashboard-section" class="hidden-section">
+            <div class="dashboard-container">
+                <h1>Dashboard Karyawan</h1>
+                <div id="employee-details">
+                    <p><strong>Nama:</strong> <span id="dashboard-nama"></span></p>
+                    <p><strong>NIK:</strong> <span id="dashboard-nik"></span></p>
+                    <p><strong>Nomor Kelompok:</strong> <span id="dashboard-nomorKelompok"></span></p>
+                </div>
+                <button id="logout-button">Logout</button>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard Section -->
+        <section id="admin-dashboard-section" class="hidden-section">
+            <div class="admin-dashboard-container">
+                <h1>Dashboard Admin</h1>
+                
+                <div id="admin-stats" class="stats-container">
+                    <h2>Statistik Data</h2>
+                    <p>Total Karyawan: <span id="total-karyawan-stat">0</span></p>
+                    <p>Total Kelompok: <span id="total-kelompok-stat">0</span></p>
+                </div>
+
+                <div id="add-employee-container" class="form-container admin-form">
+                    <h2>Tambah Data Karyawan Baru</h2>
+                    <label for="new-nama">Nama Karyawan:</label>
+                    <input type="text" id="new-nama" aria-label="Nama Karyawan Baru">
+                    
+                    <label for="new-nik">NIK Karyawan:</label>
+                    <input type="text" id="new-nik" aria-label="NIK Karyawan Baru">
+                    
+                    <label for="new-nomor-kelompok">Nomor Kelompok:</label>
+                    <input type="text" id="new-nomor-kelompok" aria-label="Nomor Kelompok Baru">
+                    
+                    <button id="add-employee-button">Tambah Karyawan</button>
+                    <p id="add-employee-message" class="message-text" aria-live="polite"></p>
+                </div>
+
+                <div id="upload-file-container" class="form-container admin-form">
+                    <h2>Unggah Data Karyawan (File)</h2>
+                    <label for="data-file-input">Pilih File (CSV, XLS, XLSX):</label>
+                    <input type="file" id="data-file-input" accept=".csv, .xls, .xlsx, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" aria-label="Pilih File untuk diunggah">
+                    <button id="upload-file-button">Unggah File</button>
+                    <p id="file-upload-message" class="message-text" aria-live="polite"></p>
+                </div>
+                
+                <button id="admin-logout-button">Logout Admin</button>
+            </div>
+        </section>
+    </div>
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
+<link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>
